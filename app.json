@@ -1,25 +1,86 @@
 {
   "expo": {
-    "name": "zhurekai-app",
-    "slug": "zhurekai-app",
-    "version": "1.0.0",
+    "name": "ZhurekAI",
+    "slug": "zhurekai",
+    "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "kz.zhurekai.app",
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "infoPlist": {
+        "CFBundleLocalizations": [
+          "ru",
+          "kk"
+        ],
+        "CFBundleDevelopmentRegion": "ru"
+      }
     },
     "android": {
+      "package": "kz.zhurekai.app",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#FF4B33",
         "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "permissions": [
+        "android.permission.BLUETOOTH",
+        "android.permission.BLUETOOTH_ADMIN",
+        "android.permission.BLUETOOTH_CONNECT"
+      ]
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "output": "single",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "backgroundColor": "#FFFFFF"
+        }
+      ],
+      "expo-localization",
+      "expo-sharing",
+      "expo-secure-store",
+      [
+        "expo-notifications",
+        {
+          "color": "#FF4B33",
+          "enableRemoteNotifications": false
+        }
+      ],
+      [
+        "react-native-ble-plx",
+        {
+          "isBackgroundEnabled": false,
+          "modes": [],
+          "bluetoothAlwaysPermission": "ZhurekAI подключается к вашему браслету по Bluetooth, чтобы показывать шаги, пульс и сон."
+        }
+      ]
+    ],
+    "scheme": "zhurekai",
+    "experiments": {
+      "typedRoutes": false
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "ce4ecc0e-96f6-498e-8bea-6376fbf4dacc"
+      }
     }
   }
 }
